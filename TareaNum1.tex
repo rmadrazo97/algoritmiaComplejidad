@@ -1,0 +1,128 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{color}
+
+\geometry{a4paper}
+
+\title{Algoritmia y Complejidad}
+\author{Alejandro Madrazo 20170478}
+\date{}
+\begin{document}
+\maketitle
+Tarea Número 1 
+
+
+
+\paragraph{Ejercicio Número 1} ~\\ \newline
+\textbf{Escriban pseudocodigo para un algoritmo de busquedad lineal, que escanee la sequencia n y encuentre un valor v. Describan cual es el loop invariant de su algoritmo para demostrar que es correcto.}\newline
+Su algoritmo debe de contener un:
+
+Input: Secuencia de n numeros A = [ a 1 , a 2 , a 3 ... , a n ]
+
+Output: Indice i tal que v = A [ i ] o nulo si no se encuentra el valor. \newline
+
+\paragraph{Respuesta} ~\\ \newline
+Array A = [a1,a2,a3,a4,...,an] \newline V =  undefined \newline for i = length.A down to 1  \{ \newline
+		\indent \indent \indent if A[i] == V \{ \newline
+			\indent \indent \indent \indent print "Exito, se encontró ".N." en A[".i."] " \newline
+			\indent \indent \indent \indent exit \newline
+		\indent \indent \} else  if i == length.A\{ \newline
+			\indent \indent \indent Print: "No se encontró ninguna coincidencia." \newline
+			\indent \indent \indent exit \newline
+		\indent \indent \} \newline
+		\indent \indent else \{ \newline
+		\indent  \indent  \indent continue \{ \newline
+		\indent \indent \} \newline
+	\indent \} \newline 
+\indent end
+
+\paragraph{Loop Invariant: } ~\\ \newline
+\indent El loop invariant en este algoritmo, es que el largo del String no cambia y es fínito. Por lo cual al iterar a través de el, si no encuentra ningúna coincidencia terminará.  \newline
+\indent Otro loop invarian es  V el cual no cambia entre iteraciones ni en toda la vida del algoritmo. Por lo cual encontrará coincidencia si la hay y si no lo indicará. 
+\pagebreak
+
+
+\paragraph{Ejercicio Número 2} ~\\ \newline
+\textbf{Dado el siguiente algoritmo de multiplicacion de matrices:} \newline
+Input: matriz A (n x m) y matriz B (m x p) \newline
+Output: matriz C (n x p) \newline
+\textcolor{blue}{Procedimiento running time (azul)} \bigskip \newline
+
+\indent For i from 1 to n: \textcolor{blue}{ n veces } \newline
+\indent \indent	For j from 1 to p:   \textcolor{blue}{ p veces }\newline
+\indent \indent \indent		Let sum = 0 \newline
+\indent \indent \indent		For k from 1 to m:  \textcolor{blue}{ m veces }  \newline
+\indent \indent \indent \indent		Set sum <- sum + A[i][k] * B[k][j] \newline
+\indent \indent \indent		Set C[i][j] <- sum \newline
+\indent return C \newline 
+\bigskip \newline
+Demuestre cual el es running time de este algoritmo.
+
+\paragraph{Running time:}
+Worst Case Running time = O(n*p*m) \newline
+Sin embargo puede darse el caso en que ambas matrices sean del mismo tamaño, entonces podemos simplificar nuestro Worst Case Running time a: O($n^3$)
+\pagebreak
+
+
+\paragraph{Ejercicio Número 3} ~\\ \newline
+\textcolor{blue}{Analisis:} \newline
+
+Bubble sort algorithm \newline
+S is an array of integers	\bigskip \newline
+for i in 1: length(S) - 1 do	 \textcolor{blue}{ n } \newline 
+\indent for j in (i+1) : length(S) do	\textcolor{blue}{ n  } \newline
+\indent \indent		if S[i] > S[j]	\textcolor{blue}{  constante  *  n}\newline
+\indent \indent \indent		swap S[i] and S[j]	\textcolor{blue}{ constante * n }\newline
+\indent \indent	end if 	\newline
+\indent	end for	\newline
+end for \bigskip	\newline
+
+\paragraph{Cual es el worst-case running time de este algoritmo? \newline
+Explicar como se compara el best-case y worst-case running time de insertion sort contra bubble sort? }~ \\ \newline
+\textcolor{blue}{Analisis:} \newline
+Insertion Sort algorithm \newline
+A is an array of integers. \bigskip \newline
+
+for j in 2:  length(A) do  \textcolor{blue}{ n  }\newline
+\indent \indent key = A[j] \textcolor{blue}{ Constante*  n -1 } \newline
+\indent  \indent	i = j -1 \textcolor{blue}{ Constante * n -1 } \newline
+\indent \indent while i > 0 and A[i] > key  do \textcolor{blue}{ constante * n - 1 * n -2  } \newline
+\indent \indent	\indent A[i+1] = A[i] \textcolor{blue}{ constante * n - 1 * n  -2   } \newline
+\indent \indent	\indent  i = i -1 \textcolor{blue}{ constante *  n - 1 * n -2   } \newline
+\indent  \indent A[i+1] = key \textcolor{blue}{ constante * n-1 } \bigskip \newline
+\paragraph{Running time:} ~\\ \newline
+\textbf{Bubble Sort:} \newline
+Podemos ver que el loop exterior toma n-1 veces, mientras que el loop interno toma n veces, dentro de este loop interior se ejecutan una comparación y un swap que ambos se pueden considerar constantes. \newline
+Ambos, worst y best case tomarían el mismo tiempo de ejecución debido a que el algoritmo compara siemrpe si S[i] > S[j] \newline
+Entonces, podemos concluir que Bubble Sort tiene una complejidad de  n - 1 * n veces. Si lo simplificamos es: $n^2$ \newline
+\textbf{Running time:  Worst Case: O($n^2$) Best Case: O ($n^2$)} \bigskip \newline
+
+\textbf{Insertion Sort:}~\\ \newline
+En insertion sort podemos notar que el loop exterior toma n comparaciones ejecutando las instrucciones internas n - 1 en el loop interior. Luego el número de movimientos  y de comparaciones de llave que realiza ejecuta n*(n-1)/2 veces.  Lo cual nos resulta en promedio en un tiempo de O($n^2$). Sin embargo existe la posibilidad que tome menos tiempo. Este sería el caso en el que se le entrega como input un arreglo ordenado de manera ascendiente, esto implicaría que el loop interior no se ejectutaría por completo. Dejandonos solamente comparaciones de llave. Esto nos daría un best case de O($n^2$). \newline
+
+En conlcusión podemos decir que: \newline
+\textbf{Running time:  Worst Case: O($n^2$) Best Case: O (n)} \bigskip \newline
+
+
+\textbf{Comparación:}~\\ \newline
+La grán diferencia entre estos dos algoritmos de ordenamiento es que uno realiza una comparación antes de reccorer el arreglo. Mientras que el otro (Bubble Sort) realiza la comparación dentro del loop que recorre el arreglo. Entonces en el caso de estár ya ordenado, igualmente tendrá que hacer todo el trabajo. 
+Es por esto que apesar de ambos tener un Worst Case: O($n^2$), en promedio parecen ser igual de eficientes. Pero, si consideramos casos en los cuales el arreglo viene casí ordenado, uno desempeña mejor que otro. En este caso Insertion Sort. 
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+

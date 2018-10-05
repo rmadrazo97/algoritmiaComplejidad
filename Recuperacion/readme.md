@@ -1,81 +1,82 @@
-# Project Title
-
+# ASCII MergeSort -Algoritmia y Complejidad 2018
 Oraciones ordenadas por ASCII utilizando el algoritmo de ordenamiento MergeSort.
 
-## Getting Started
+## 1
 
 Clonar el repositorio.
 
-### Prerequisites
-Para poder explorar este proyecto, primero debe crear una imagen a partir del dockerfile acá contenido.
-### Installing
+### 2 Requisitos
+Para facilitar la exploración de este proyecto, se ha agregado un docker file. Si desea evaluarlo por medio de docker, es necesario que tenga docker instalado. Si no es el caso, puede probar el proyecto localmente, el único requisito sería tener python en su computadora.
+### 3 Preparando el proyecto
 
-A step by step series of examples that tell you how to get a development env running
+-Paso a Paso...
 
-Say what the step will be
+#### Docker:
+Si se usa docker:
+construir la imagen
+```
+docker build -t mergesort .
 
 ```
-Give the example
+
+levantar contenedor con puerto expuesto y sh para explorar el contenedor.
+```
+$ docker run -it -p 5000:5000 -v $(pwd):/code mergesort1 sh
+
 ```
 
-And repeat
+### Con Python en computadora local
+Teniendo python instalado...
+```
+pip install jug
 
 ```
-until finished
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+pip install os
 
 ```
-Give an example
 ```
-
-### And coding style tests
-
-Explain what these tests test and why
+pip install dispy
 
 ```
-Give an example
+```
+pip install flask
+
 ```
 
-## Deployment
 
-Add additional notes about how to deploy this on a live system
+## 4. Tests
 
-## Built With
+Como testear el proyecto.
+-Agregar las oraciones a ordenar en el archivo llamado>> "unorderedFile.txt"
+--las oraciones se separan por [ENTER] y no existe limite para la cantidad de oraciones.
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+### paso 1
+Al finalizar este paso, jug imprime un resumen de las "tasks" ejecutadas de manera paralela
+```
+jug execute main.py
 
-## Contributing
+```
+### paso 2
+Ver el estado de las tareas ejecutadas por jug
+```
+jug status main.py
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+```
+### paso 3
+Ver el resultado
+```
+cat orderedFile.txt
 
-## Versioning
+```
+Ver el resultado en un navegador web con flask
+--Este paso permite observar el resultado en el puerto expuesto en el levantamiento del contenedor. 
+```
+python app.py
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+```
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Alejandro Madrazo** 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc

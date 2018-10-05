@@ -1,0 +1,17 @@
+FROM python:3.6.4
+
+#working directory
+WORKDIR /code
+
+COPY requirements.txt ./
+run pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 5000
+
+
+CMD ["jug execute", "code/main.py", "python","app.py"]
+
+
+

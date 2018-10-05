@@ -1,7 +1,7 @@
 # ASCII MergeSort -Algoritmia y Complejidad 2018
 Oraciones ordenadas por ASCII utilizando el algoritmo de ordenamiento MergeSort.
 
-## 1
+## 1 Clonar
 
 Clonar el repositorio.
 
